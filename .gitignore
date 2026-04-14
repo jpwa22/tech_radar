@@ -1,0 +1,11 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+
+data/raw/
+data/cache/
+logs/
+
+data/latest.json
+data/latest_report.html
