@@ -1,0 +1,111 @@
+settings:
+  max_items_per_source: 8
+  max_items_total: 80
+  lookback_days: 7
+
+sources:
+  - name: Simon Willison
+    category: software_dev
+    kind: rss
+    site_url: https://simonwillison.net/
+    feed_url: https://simonwillison.net/atom/links/
+    language: en
+    priority: 10
+    enabled: true
+
+  - name: Martin Fowler
+    category: software_architecture
+    kind: rss
+    site_url: https://martinfowler.com/
+    feed_url: https://martinfowler.com/feed.atom
+    language: en
+    priority: 10
+    enabled: true
+
+  - name: GitHub Blog
+    category: software_dev
+    kind: rss
+    site_url: https://github.blog/
+    feed_url: https://github.blog/feed/
+    language: en
+    priority: 9
+    enabled: true
+
+  - name: Posit Blog
+    category: data_science
+    kind: rss
+    site_url: https://posit.co/blog/
+    feed_url: https://posit.co/blog/index.xml
+    language: en
+    priority: 10
+    enabled: true
+
+  - name: DuckDB Blog
+    category: data_engineering
+    kind: rss
+    site_url: https://duckdb.org/news/
+    feed_url: https://duckdb.org/news/index.xml
+    language: en
+    priority: 10
+    enabled: true
+
+  - name: Hugging Face Blog
+    category: ai_ml
+    kind: rss
+    site_url: https://huggingface.co/blog
+    feed_url: https://huggingface.co/blog/feed.xml
+    language: en
+    priority: 9
+    enabled: true
+
+  - name: Python Software Foundation Blog
+    category: software_dev
+    kind: rss
+    site_url: https://pyfound.blogspot.com/
+    feed_url: https://pyfound.blogspot.com/feeds/posts/default?alt=rss
+    language: en
+    priority: 8
+    enabled: true
+
+  - name: Cloudflare Blog
+    category: software_infra
+    kind: rss
+    site_url: https://blog.cloudflare.com/
+    feed_url: https://blog.cloudflare.com/rss/
+    language: en
+    priority: 8
+    enabled: true
+
+  - name: Netflix Tech Blog
+    category: software_infra
+    kind: rss
+    site_url: https://netflixtechblog.com/
+    feed_url: https://netflixtechblog.com/feed
+    language: en
+    priority: 7
+    enabled: true
+
+  - name: Thoughtworks Insights
+    category: software_architecture
+    kind: rss
+    site_url: https://www.thoughtworks.com/insights
+    feed_url: https://www.thoughtworks.com/rss-insights.xml
+    language: en
+    priority: 7
+    enabled: true
+
+  - name: Streamlit Blog
+    category: data_science
+    kind: rss
+    site_url: https://blog.streamlit.io/
+    language: en
+    priority: 7
+    enabled: true
+
+  - name: Akita On Rails
+    category: software_dev
+    kind: rss
+    feed_url: https://akitaonrails.com/index.xml
+    language: pt
+    priority: 1
+    enabled: true

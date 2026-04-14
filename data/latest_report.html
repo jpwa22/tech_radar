@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radar Tech</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --text: #183046;
+      --muted: #5c7285;
+      --line: #d8e2ec;
+      --primary: #0f6cbd;
+      --accent: #19a974;
+      --shadow: 0 10px 30px rgba(15, 48, 70, 0.08);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 24px 12px;
+      background:
+        radial-gradient(circle at top left, rgba(25, 169, 116, 0.12), transparent 28%),
+        linear-gradient(180deg, #eef4f9 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .hero {
+      background: linear-gradient(135deg, #0f6cbd 0%, #0b4f87 55%, #083250 100%);
+      color: #fff;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.1;
+    }
+    .hero p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 15px;
+    }
+    .category {
+      margin-top: 24px;
+    }
+    .category-title {
+      margin: 0 0 12px;
+      font-size: 20px;
+      text-transform: capitalize;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .card a {
+      color: var(--primary);
+      font-size: 18px;
+      line-height: 1.3;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .card p {
+      margin: 10px 0 0;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #28475f;
+    }
+    .empty {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 20px;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(25, 169, 116, 0.12);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 10px;
+      }
+      .hero {
+        padding: 22px 18px;
+        border-radius: 20px;
+      }
+      .hero h1 {
+        font-size: 26px;
+      }
+      .card {
+        padding: 16px;
+        border-radius: 16px;
+      }
+      .card a {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <section class="hero">
+      <h1>Radar Tech</h1>
+      <p>Noticias filtradas sobre desenvolvimento, dados e IA.</p>
+      <span class="badge">Gerado em 13/04/2026 22:14</span>
+    </section>
+    
+    <section class="category">
+      <h2 class="category-title">Blogs e engenharia</h2>
+      <div class="card">
+        <div class="meta">Principais sinais do periodo</div>
+        <ul><li>Fontes com mais destaque: Hugging Face Blog, Hugging Face Blog, Hugging Face Blog</li><li>Temas tecnicos mais fortes: ai_ml, ai_ml, ai_ml</li><li>12 posts tecnicos selecionados por relevancia e recencia.</li></ul>
+      </div>
+      
+      <article class="card">
+        <div class="meta">Hugging Face Blog | 2026-04-09T00:00:00+00:00</div>
+        <a href="https://huggingface.co/blog/multimodal-sentence-transformers" target="_blank" rel="noopener noreferrer">Multimodal Embedding &amp; Reranker Models with Sentence Transformers</a>
+        <p>Multimodal Embedding &amp; Reranker Models with Sentence Transformers Hugging Face Models Datasets Spaces Buckets new Docs Enterprise Pricing Log In Sign Up Back to Articles Multimodal Embedding &amp; Reranker Models with Sentence Transformers P...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Hugging Face Blog | 2026-04-08T00:00:00+00:00</div>
+        <a href="https://huggingface.co/blog/safetensors-joins-pytorch-foundation" target="_blank" rel="noopener noreferrer">Safetensors is Joining the PyTorch Foundation</a>
+        <p>Safetensors is Joining the PyTorch Foundation Hugging Face Models Datasets Spaces Buckets new Docs Enterprise Pricing Log In Sign Up Back to Articles Safetensors is Joining the PyTorch Foundation Published April 8, 2026 Update on GitHub...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Hugging Face Blog | 2026-04-09T00:00:00+00:00</div>
+        <a href="https://huggingface.co/blog/waypoint-1-5" target="_blank" rel="noopener noreferrer">Waypoint-1.5: Higher-Fidelity Interactive Worlds for Everyday GPUs</a>
+        <p>Waypoint-1.5: Higher-Fidelity Interactive Worlds for Everyday GPUs Hugging Face Models Datasets Spaces Buckets new Docs Enterprise Pricing Log In Sign Up Back to Articles Waypoint-1.5: Higher-Fidelity Interactive Worlds for Everyday GPUs...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Simon Willison</div>
+        <a href="https://simonwillison.net/2026/Apr/7/glm-51/" target="_blank" rel="noopener noreferrer">GLM-5.1: Towards Long-Horizon Tasks</a>
+        <p>GLM-5.1: Towards Long-Horizon Tasks Chinese AI lab Z.ai&#x27;s latest model is a giant 754B parameter 1.51TB (on Hugging Face ) MIT-licensed monster - the same size as their previous GLM-5 release, and sharing the same paper . It&#x27;s available...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Simon Willison</div>
+        <a href="https://simonwillison.net/2026/Apr/6/google-ai-edge-gallery/" target="_blank" rel="noopener noreferrer">Google AI Edge Gallery</a>
+        <p>Google AI Edge Gallery Terrible name, really great app: this is Google&#x27;s official app for running their Gemma 4 models (the E2B and E4B sizes, plus some members of the Gemma 3 family) directly on your iPhone. It works really well. The E2...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Simon Willison</div>
+        <a href="https://simonwillison.net/2026/Apr/5/building-with-ai/" target="_blank" rel="noopener noreferrer">Eight years of wanting, three months of building with AI</a>
+        <p>Eight years of wanting, three months of building with AI Lalit Maganti provides one of my favorite pieces of long-form writing on agentic engineering I&#x27;ve seen in ages. They spent eight years thinking about and then three months building...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Simon Willison</div>
+        <a href="https://simonwillison.net/2026/Apr/3/vulnerability-research-is-cooked/" target="_blank" rel="noopener noreferrer">Vulnerability Research Is Cooked</a>
+        <p>Vulnerability Research Is Cooked Thomas Ptacek&#x27;s take on the sudden and enormous impact the latest frontier models are having on the field of vulnerability research. Within the next few months, coding agents will drastically alter both t...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Simon Willison</div>
+        <a href="https://simonwillison.net/2026/Apr/2/gemma-4/" target="_blank" rel="noopener noreferrer">Gemma 4: Byte for byte, the most capable open models</a>
+        <p>Gemma 4: Byte for byte, the most capable open models Four new vision-capable Apache 2.0 licensed reasoning LLMs from Google DeepMind, sized at 2B, 4B, 31B, plus a 26B-A4B Mixture-of-Experts. Google emphasize &quot;unprecedented level of intel...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Martin Fowler</div>
+        <a href="https://martinfowler.com/articles/mechanical-sympathy-principles.html" target="_blank" rel="noopener noreferrer">Principles of Mechanical Sympathy</a>
+        <p>Modern hardware is remarkably fast, but software often fails to leverage it. Caer Sanders has found it valuable to guide their work with mechanical sympathy - the practice of creating software that is sympathetic to its underlying hardwa...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Martin Fowler</div>
+        <a href="https://martinfowler.com/articles/reduce-friction-ai/encoding-team-standards.html" target="_blank" rel="noopener noreferrer">Encoding Team Standards</a>
+        <p>AI coding assistants respond to whoever is prompting, and the quality of what they produce depends on how well the prompter articulates team standards. Rahul Garg proposes treating the instructions that govern AI interactions (generation...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Martin Fowler</div>
+        <a href="https://martinfowler.com/fragments/2026-03-26.html" target="_blank" rel="noopener noreferrer">Fragments: March 26</a>
+        <p>Anthropic carried a study, done by getting its model to interview some 80,000 users to understand their opinions about AI, what they hope from it, and what they fear. Two things stood out to me. It’s easy to assume there are AI optimists...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">Python Software Foundation Blog | 2026-04-13T18:01:00+00:00</div>
+        <a href="https://pyfound.blogspot.com/2026/04/reflecting-on-five-years-as-psfs-first.html" target="_blank" rel="noopener noreferrer">Reflecting on Five Years as the PSF’s First CPython Developer in Residence</a>
+        <p>After nearly five wonderful years at the Python Software Foundation as the inaugural CPython Developer in Residence, it&#x27;s time for me to move on. I feel honored and honestly so lucky to have had the opportunity to kick off the program th...</p>
+      </article>
+    
+    </section>
+    
+    <section class="category">
+      <h2 class="category-title">desenvolvimento</h2>
+      
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-13T23:03:01+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-13-copilot-data-residency-in-us-eu-and-fedramp-compliance-now-available" target="_blank" rel="noopener noreferrer">Copilot data residency in US + EU and FedRAMP compliance now available</a>
+        <p>GitHub Copilot now supports data residency for US and EU regions, ensuring all inference processing and associated data stay within your designated geography. For US government customers, all model hosts… The post Copilot data residency...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Blog | 2026-03-31T16:00:00+00:00</div>
+        <a href="https://github.blog/ai-and-ml/github-copilot/agent-driven-development-in-copilot-applied-science/" target="_blank" rel="noopener noreferrer">Agent-driven development in Copilot Applied Science</a>
+        <p>I used coding agents to build agents that automated part of my job. Here&#x27;s what I learned about working better with coding agents. The post Agent-driven development in Copilot Applied Science appeared first on The GitHub Blog .</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Blog | 2026-04-01T19:20:12+00:00</div>
+        <a href="https://github.blog/security/supply-chain-security/securing-the-open-source-supply-chain-across-github/" target="_blank" rel="noopener noreferrer">Securing the open source supply chain across GitHub</a>
+        <p>Recent attacks on open source focus on exfiltrating secrets; here are the prevention steps you can take today, plus a look at the security capabilities GitHub is working on. The post Securing the open source supply chain across GitHub ap...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-10T22:56:46+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-10-enforcing-new-limits-and-retiring-opus-4-6-fast-from-copilot-pro" target="_blank" rel="noopener noreferrer">Enforcing new limits and retiring Opus 4.6 Fast from Copilot Pro+</a>
+        <p>As GitHub Copilot continues to rapidly grow, we continue to observe an increase in patterns of high concurrency and intense usage. While we understand this can be driven by legitimate… The post Enforcing new limits and retiring Opus 4.6...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-10T20:03:28+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-10-copilot-cli-activity-now-included-in-usage-metrics-totals-and-feature-breakdowns" target="_blank" rel="noopener noreferrer">Copilot CLI activity now included in usage metrics totals and feature breakdowns</a>
+        <p>Previous CLI metrics releases added a standalone totals_by_cli section to the Copilot usage metrics API with session counts, request counts, and token usage. That section reported CLI activity separately from… The post Copilot CLI activi...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-13T19:36:26+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-13-fix-merge-conflicts-in-three-clicks-with-copilot-cloud-agent" target="_blank" rel="noopener noreferrer">Fix merge conflicts in three clicks with Copilot cloud agent</a>
+        <p>You can now fix merge conflicts in three clicks with the new Fix with Copilot button on github.com, powered by Copilot cloud agent. Click the button, and a comment is… The post Fix merge conflicts in three clicks with Copilot cloud agent...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-13T14:15:43+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-13-remote-control-cli-sessions-on-web-and-mobile-in-public-preview" target="_blank" rel="noopener noreferrer">Remote control CLI sessions on web and mobile in public preview</a>
+        <p>The Copilot CLI is no longer a purely local experience. Today we’re launching copilot --remote: With remote capabilities, you can now monitor and steer a running CLI session directly from… The post Remote control CLI sessions on web and...</p>
+      </article>
+    
+    </section>
+    
+    <section class="category">
+      <h2 class="category-title">ia</h2>
+      
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-10T20:03:29+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-10-actions-workflows-are-limited-to-50-reruns" target="_blank" rel="noopener noreferrer">Actions workflows are limited to 50 reruns</a>
+        <p>Actions workflows are now limited to 50 reruns. Going forward, if you attempt to rerun a given workflow more than 50 times, you will get a failed check suite with… The post Actions workflows are limited to 50 reruns appeared first on The...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Blog | 2026-04-10T16:00:00+00:00</div>
+        <a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-for-beginners-getting-started-with-github-copilot-cli/" target="_blank" rel="noopener noreferrer">GitHub Copilot CLI for Beginners: Getting started with GitHub Copilot CLI</a>
+        <p>GitHub for Beginners: Getting started with the GitHub Copilot CLI, a step-by-step tutorial. The post GitHub Copilot CLI for Beginners: Getting started with GitHub Copilot CLI appeared first on The GitHub Blog .</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Changelog | 2026-04-09T19:33:16+00:00</div>
+        <a href="https://github.blog/changelog/2026-04-09-ask-copilot-in-security-assessments-now-available" target="_blank" rel="noopener noreferrer">Ask Copilot in security assessments now available</a>
+        <p>Organization admins and security managers can now jump into a Copilot experience directly from secret risk assessment or Code Security risk assessment results to get contextual explanations and guided next… The post Ask Copilot in securi...</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Blog | 2026-04-09T02:21:17+00:00</div>
+        <a href="https://github.blog/news-insights/company-news/github-availability-report-march-2026/" target="_blank" rel="noopener noreferrer">GitHub availability report: March 2026</a>
+        <p>In March, we experienced four incidents that resulted in degraded performance across GitHub services. The post GitHub availability report: March 2026 appeared first on The GitHub Blog .</p>
+      </article>
+    
+      <article class="card">
+        <div class="meta">GitHub Blog | 2026-04-06T21:53:49+00:00</div>
+        <a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-combines-model-families-for-a-second-opinion/" target="_blank" rel="noopener noreferrer">GitHub Copilot CLI combines model families for a second opinion</a>
+        <p>Discover how Rubber Duck provides a different perspective to GitHub Copilot CLI. The post GitHub Copilot CLI combines model families for a second opinion appeared first on The GitHub Blog .</p>
+      </article>
+    
+    </section>
+    
+  </div>
+</body>
+</html>

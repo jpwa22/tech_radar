@@ -1,0 +1,1552 @@
+2026-04-13 21:00:26 | INFO | Iniciando execucao do Tech Radar
+2026-04-13 21:00:26 | INFO | Lendo feed: https://github.blog/feed/
+2026-04-13 21:00:27 | INFO | Feed GitHub Blog retornou 10 itens
+2026-04-13 21:00:27 | INFO | Lendo feed: https://github.blog/changelog/feed/
+2026-04-13 21:00:27 | INFO | Feed GitHub Changelog retornou 10 itens
+2026-04-13 21:00:27 | INFO | Lendo feed: https://duckdb.org/news/index.xml
+2026-04-13 21:00:27 | ERROR | Falha ao ler feed https://duckdb.org/news/index.xml: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 23, in fetch_all_feeds
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 21:00:27 | INFO | Lendo feed: https://news.ycombinator.com/rss
+2026-04-13 21:00:28 | INFO | Feed Hacker News retornou 30 itens
+2026-04-13 21:00:28 | INFO | Total bruto de itens coletados: 50
+2026-04-13 21:00:28 | INFO | Itens apos filtros: 40
+2026-04-13 21:00:28 | INFO | JSON salvo em /home/hall/hall/tech_radar/data/latest.json
+2026-04-13 21:00:28 | INFO | Relatorio HTML salvo em /home/hall/hall/tech_radar/data/latest_report.html
+2026-04-13 21:00:28 | INFO | Dry-run ativo: e-mail nao sera enviado
+2026-04-13 21:58:40 | INFO | Iniciando execucao do Tech Radar
+2026-04-13 21:58:40 | INFO | Lendo feed: https://github.blog/feed/
+2026-04-13 21:58:40 | ERROR | Falha ao ler feed https://github.blog/feed/: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27de3680>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27de3680>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27de3680>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 22, in fetch_all_feeds
+    response = session.get(feed["url"], timeout=REQUEST_TIMEOUT, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27de3680>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Lendo feed: https://github.blog/changelog/feed/
+2026-04-13 21:58:40 | ERROR | Falha ao ler feed https://github.blog/changelog/feed/: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /changelog/feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27d186e0>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27d186e0>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /changelog/feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27d186e0>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 22, in fetch_all_feeds
+    response = session.get(feed["url"], timeout=REQUEST_TIMEOUT, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /changelog/feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27d186e0>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Lendo feed: https://duckdb.org/news/index.xml
+2026-04-13 21:58:40 | ERROR | Falha ao ler feed https://duckdb.org/news/index.xml: HTTPSConnectionPool(host='duckdb.org', port=443): Max retries exceeded with url: /news/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27ba1f70>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27ba1f70>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='duckdb.org', port=443): Max retries exceeded with url: /news/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27ba1f70>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 22, in fetch_all_feeds
+    response = session.get(feed["url"], timeout=REQUEST_TIMEOUT, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='duckdb.org', port=443): Max retries exceeded with url: /news/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27ba1f70>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Lendo feed: https://news.ycombinator.com/rss
+2026-04-13 21:58:40 | ERROR | Falha ao ler feed https://news.ycombinator.com/rss: HTTPSConnectionPool(host='news.ycombinator.com', port=443): Max retries exceeded with url: /rss (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27ba35f0>: Failed to resolve 'news.ycombinator.com' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27ba35f0>: Failed to resolve 'news.ycombinator.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='news.ycombinator.com', port=443): Max retries exceeded with url: /rss (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27ba35f0>: Failed to resolve 'news.ycombinator.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 22, in fetch_all_feeds
+    response = session.get(feed["url"], timeout=REQUEST_TIMEOUT, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='news.ycombinator.com', port=443): Max retries exceeded with url: /rss (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27ba35f0>: Failed to resolve 'news.ycombinator.com' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Simon Willison: https://simonwillison.net/atom/everything/
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Simon Willison: HTTPSConnectionPool(host='simonwillison.net', port=443): Max retries exceeded with url: /atom/everything/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb82f0>: Failed to resolve 'simonwillison.net' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bb82f0>: Failed to resolve 'simonwillison.net' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='simonwillison.net', port=443): Max retries exceeded with url: /atom/everything/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb82f0>: Failed to resolve 'simonwillison.net' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='simonwillison.net', port=443): Max retries exceeded with url: /atom/everything/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb82f0>: Failed to resolve 'simonwillison.net' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Martin Fowler: https://martinfowler.com/feed.atom
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Martin Fowler: HTTPSConnectionPool(host='martinfowler.com', port=443): Max retries exceeded with url: /feed.atom (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb8f50>: Failed to resolve 'martinfowler.com' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bb8f50>: Failed to resolve 'martinfowler.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='martinfowler.com', port=443): Max retries exceeded with url: /feed.atom (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb8f50>: Failed to resolve 'martinfowler.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='martinfowler.com', port=443): Max retries exceeded with url: /feed.atom (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb8f50>: Failed to resolve 'martinfowler.com' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica GitHub Blog: https://github.blog/feed/
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica GitHub Blog: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb9880>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bb9880>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb9880>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='github.blog', port=443): Max retries exceeded with url: /feed/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb9880>: Failed to resolve 'github.blog' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Posit Blog: https://posit.co/blog/index.xml
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Posit Blog: HTTPSConnectionPool(host='posit.co', port=443): Max retries exceeded with url: /blog/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba3c0>: Failed to resolve 'posit.co' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bba3c0>: Failed to resolve 'posit.co' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='posit.co', port=443): Max retries exceeded with url: /blog/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba3c0>: Failed to resolve 'posit.co' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='posit.co', port=443): Max retries exceeded with url: /blog/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba3c0>: Failed to resolve 'posit.co' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica DuckDB Blog: https://duckdb.org/news/index.xml
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica DuckDB Blog: HTTPSConnectionPool(host='duckdb.org', port=443): Max retries exceeded with url: /news/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb9970>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bb9970>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='duckdb.org', port=443): Max retries exceeded with url: /news/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb9970>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='duckdb.org', port=443): Max retries exceeded with url: /news/index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb9970>: Failed to resolve 'duckdb.org' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Hugging Face Blog: https://huggingface.co/blog/feed.xml
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Hugging Face Blog: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /blog/feed.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb8260>: Failed to resolve 'huggingface.co' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bb8260>: Failed to resolve 'huggingface.co' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /blog/feed.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb8260>: Failed to resolve 'huggingface.co' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /blog/feed.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bb8260>: Failed to resolve 'huggingface.co' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Python Software Foundation Blog: https://pyfound.blogspot.com/feeds/posts/default?alt=rss
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Python Software Foundation Blog: HTTPSConnectionPool(host='pyfound.blogspot.com', port=443): Max retries exceeded with url: /feeds/posts/default?alt=rss (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba8d0>: Failed to resolve 'pyfound.blogspot.com' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bba8d0>: Failed to resolve 'pyfound.blogspot.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='pyfound.blogspot.com', port=443): Max retries exceeded with url: /feeds/posts/default?alt=rss (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba8d0>: Failed to resolve 'pyfound.blogspot.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='pyfound.blogspot.com', port=443): Max retries exceeded with url: /feeds/posts/default?alt=rss (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba8d0>: Failed to resolve 'pyfound.blogspot.com' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Cloudflare Blog: https://blog.cloudflare.com/rss/
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Cloudflare Blog: HTTPSConnectionPool(host='blog.cloudflare.com', port=443): Max retries exceeded with url: /rss/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bbb6b0>: Failed to resolve 'blog.cloudflare.com' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bbb6b0>: Failed to resolve 'blog.cloudflare.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='blog.cloudflare.com', port=443): Max retries exceeded with url: /rss/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bbb6b0>: Failed to resolve 'blog.cloudflare.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='blog.cloudflare.com', port=443): Max retries exceeded with url: /rss/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bbb6b0>: Failed to resolve 'blog.cloudflare.com' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Netflix Tech Blog: https://netflixtechblog.com/feed
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Netflix Tech Blog: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bbb500>: Failed to resolve 'netflixtechblog.com' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bbb500>: Failed to resolve 'netflixtechblog.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bbb500>: Failed to resolve 'netflixtechblog.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bbb500>: Failed to resolve 'netflixtechblog.com' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Coletando fonte tecnica Thoughtworks Insights: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Thoughtworks Insights: HTTPSConnectionPool(host='www.thoughtworks.com', port=443): Max retries exceeded with url: /rss-insights.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba600>: Failed to resolve 'www.thoughtworks.com' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bba600>: Failed to resolve 'www.thoughtworks.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.thoughtworks.com', port=443): Max retries exceeded with url: /rss-insights.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba600>: Failed to resolve 'www.thoughtworks.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.thoughtworks.com', port=443): Max retries exceeded with url: /rss-insights.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba600>: Failed to resolve 'www.thoughtworks.com' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | ERROR | Falha ao processar fonte tecnica Streamlit Blog: HTTPSConnectionPool(host='blog.streamlit.io', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba0c0>: Failed to resolve 'blog.streamlit.io' ([Errno -2] Name or service not known)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7d6c27bba0c0>: Failed to resolve 'blog.streamlit.io' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='blog.streamlit.io', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba0c0>: Failed to resolve 'blog.streamlit.io' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 47, in fetch_blog_sources
+    feed_url = resolve_feed_url(source, session, discovery_cache, logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 137, in resolve_feed_url
+    response = get_with_retry(session, site_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='blog.streamlit.io', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d6c27bba0c0>: Failed to resolve 'blog.streamlit.io' ([Errno -2] Name or service not known)"))
+2026-04-13 21:58:40 | INFO | Payload bruto de blogs salvo em /home/hall/hall/tech_radar/data/raw/blog_sources_raw.json
+2026-04-13 21:58:40 | INFO | Total bruto de itens coletados: 0
+2026-04-13 21:58:40 | INFO | Itens apos filtros: 0 | deduplicados: 0
+2026-04-13 21:58:40 | INFO | JSON salvo em /home/hall/hall/tech_radar/data/latest.json
+2026-04-13 21:58:40 | INFO | Relatorio HTML salvo em /home/hall/hall/tech_radar/data/latest_report.html
+2026-04-13 21:58:40 | INFO | Dry-run ativo: e-mail nao sera enviado
+2026-04-13 22:05:58 | INFO | Iniciando execucao do Tech Radar
+2026-04-13 22:05:58 | INFO | Lendo feed: https://github.blog/feed/
+2026-04-13 22:05:58 | INFO | Feed GitHub Blog retornou 10 itens
+2026-04-13 22:05:58 | INFO | Lendo feed: https://github.blog/changelog/feed/
+2026-04-13 22:05:58 | INFO | Feed GitHub Changelog retornou 10 itens
+2026-04-13 22:05:58 | INFO | Lendo feed: https://duckdb.org/news/index.xml
+2026-04-13 22:05:59 | ERROR | Falha ao ler feed https://duckdb.org/news/index.xml: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 23, in fetch_all_feeds
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 22:05:59 | INFO | Lendo feed: https://news.ycombinator.com/rss
+2026-04-13 22:05:59 | INFO | Feed Hacker News retornou 30 itens
+2026-04-13 22:05:59 | INFO | Coletando fonte tecnica Simon Willison: https://simonwillison.net/atom/everything/
+2026-04-13 22:06:00 | INFO | Fonte tecnica Simon Willison retornou 8 itens
+2026-04-13 22:06:00 | INFO | Coletando fonte tecnica Martin Fowler: https://martinfowler.com/feed.atom
+2026-04-13 22:06:01 | INFO | Fonte tecnica Martin Fowler retornou 8 itens
+2026-04-13 22:06:01 | INFO | Coletando fonte tecnica GitHub Blog: https://github.blog/feed/
+2026-04-13 22:06:01 | INFO | Fonte tecnica GitHub Blog retornou 4 itens
+2026-04-13 22:06:01 | INFO | Coletando fonte tecnica Posit Blog: https://posit.co/blog/index.xml
+2026-04-13 22:06:03 | ERROR | Falha ao processar fonte tecnica Posit Blog: 404 Client Error: Not Found for url: https://posit.co/blog/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://posit.co/blog/index.xml
+2026-04-13 22:06:03 | INFO | Coletando fonte tecnica DuckDB Blog: https://duckdb.org/news/index.xml
+2026-04-13 22:06:03 | ERROR | Falha ao processar fonte tecnica DuckDB Blog: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 22:06:03 | INFO | Coletando fonte tecnica Hugging Face Blog: https://huggingface.co/blog/feed.xml
+2026-04-13 22:06:04 | INFO | Fonte tecnica Hugging Face Blog retornou 4 itens
+2026-04-13 22:06:04 | INFO | Coletando fonte tecnica Python Software Foundation Blog: https://pyfound.blogspot.com/feeds/posts/default?alt=rss
+2026-04-13 22:06:06 | INFO | Fonte tecnica Python Software Foundation Blog retornou 1 itens
+2026-04-13 22:06:06 | INFO | Coletando fonte tecnica Cloudflare Blog: https://blog.cloudflare.com/rss/
+2026-04-13 22:06:09 | INFO | Fonte tecnica Cloudflare Blog retornou 8 itens
+2026-04-13 22:06:09 | INFO | Coletando fonte tecnica Netflix Tech Blog: https://netflixtechblog.com/feed
+2026-04-13 22:06:10 | ERROR | Falha ao processar fonte tecnica Netflix Tech Blog: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 1042, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.12/ssl.py", line 1320, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 605, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+2026-04-13 22:06:10 | INFO | Coletando fonte tecnica Thoughtworks Insights: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 22:06:10 | ERROR | Falha ao processar fonte tecnica Thoughtworks Insights: 404 Client Error: Not Found for url: https://www.thoughtworks.com/rss-insights.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 22:06:11 | ERROR | Falha ao processar fonte tecnica Streamlit Blog: 403 Client Error: Forbidden for url: https://blog.streamlit.io/
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 47, in fetch_blog_sources
+    feed_url = resolve_feed_url(source, session, discovery_cache, logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 138, in resolve_feed_url
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://blog.streamlit.io/
+2026-04-13 22:06:11 | INFO | Payload bruto de blogs salvo em /home/hall/hall/tech_radar/data/raw/blog_sources_raw.json
+2026-04-13 22:06:11 | INFO | Total bruto de itens coletados: 83
+2026-04-13 22:06:11 | INFO | Itens apos filtros: 40 | deduplicados: 5
+2026-04-13 22:06:11 | INFO | JSON salvo em /home/hall/hall/tech_radar/data/latest.json
+2026-04-13 22:06:11 | INFO | Relatorio HTML salvo em /home/hall/hall/tech_radar/data/latest_report.html
+2026-04-13 22:06:11 | INFO | Dry-run ativo: e-mail nao sera enviado
+2026-04-13 22:10:42 | INFO | Iniciando execucao do Tech Radar
+2026-04-13 22:10:42 | INFO | Lendo feed: https://github.blog/feed/
+2026-04-13 22:10:42 | INFO | Feed GitHub Blog retornou 10 itens
+2026-04-13 22:10:42 | INFO | Lendo feed: https://github.blog/changelog/feed/
+2026-04-13 22:10:42 | INFO | Feed GitHub Changelog retornou 10 itens
+2026-04-13 22:10:42 | INFO | Lendo feed: https://duckdb.org/news/index.xml
+2026-04-13 22:10:42 | ERROR | Falha ao ler feed https://duckdb.org/news/index.xml: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 23, in fetch_all_feeds
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 22:10:42 | INFO | Lendo feed: https://news.ycombinator.com/rss
+2026-04-13 22:10:43 | INFO | Feed Hacker News retornou 30 itens
+2026-04-13 22:10:43 | INFO | Coletando fonte tecnica Simon Willison: https://simonwillison.net/atom/links/
+2026-04-13 22:10:43 | INFO | Fonte tecnica Simon Willison retornou 8 itens
+2026-04-13 22:10:43 | INFO | Coletando fonte tecnica Martin Fowler: https://martinfowler.com/feed.atom
+2026-04-13 22:10:44 | INFO | Fonte tecnica Martin Fowler retornou 8 itens
+2026-04-13 22:10:44 | INFO | Coletando fonte tecnica GitHub Blog: https://github.blog/feed/
+2026-04-13 22:10:44 | INFO | Fonte tecnica GitHub Blog retornou 4 itens
+2026-04-13 22:10:44 | INFO | Coletando fonte tecnica Posit Blog: https://posit.co/blog/index.xml
+2026-04-13 22:10:44 | ERROR | Falha ao processar fonte tecnica Posit Blog: 404 Client Error: Not Found for url: https://posit.co/blog/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://posit.co/blog/index.xml
+2026-04-13 22:10:44 | INFO | Coletando fonte tecnica DuckDB Blog: https://duckdb.org/news/index.xml
+2026-04-13 22:10:44 | ERROR | Falha ao processar fonte tecnica DuckDB Blog: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 22:10:44 | INFO | Coletando fonte tecnica Hugging Face Blog: https://huggingface.co/blog/feed.xml
+2026-04-13 22:10:46 | INFO | Fonte tecnica Hugging Face Blog retornou 4 itens
+2026-04-13 22:10:46 | INFO | Coletando fonte tecnica Python Software Foundation Blog: https://pyfound.blogspot.com/feeds/posts/default?alt=rss
+2026-04-13 22:10:47 | INFO | Fonte tecnica Python Software Foundation Blog retornou 1 itens
+2026-04-13 22:10:47 | INFO | Coletando fonte tecnica Cloudflare Blog: https://blog.cloudflare.com/rss/
+2026-04-13 22:10:48 | INFO | Fonte tecnica Cloudflare Blog retornou 8 itens
+2026-04-13 22:10:48 | INFO | Coletando fonte tecnica Netflix Tech Blog: https://netflixtechblog.com/feed
+2026-04-13 22:10:48 | ERROR | Falha ao processar fonte tecnica Netflix Tech Blog: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 1042, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.12/ssl.py", line 1320, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 605, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+2026-04-13 22:10:48 | INFO | Coletando fonte tecnica Thoughtworks Insights: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 22:10:48 | ERROR | Falha ao processar fonte tecnica Thoughtworks Insights: 404 Client Error: Not Found for url: https://www.thoughtworks.com/rss-insights.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 22:10:49 | ERROR | Falha ao processar fonte tecnica Streamlit Blog: 403 Client Error: Forbidden for url: https://blog.streamlit.io/
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 47, in fetch_blog_sources
+    feed_url = resolve_feed_url(source, session, discovery_cache, logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 138, in resolve_feed_url
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://blog.streamlit.io/
+2026-04-13 22:10:49 | INFO | Payload bruto de blogs salvo em /home/hall/hall/tech_radar/data/raw/blog_sources_raw.json
+2026-04-13 22:10:49 | INFO | Total bruto de itens coletados: 83
+2026-04-13 22:10:49 | INFO | Itens apos filtros: 40 | deduplicados: 5
+2026-04-13 22:10:49 | INFO | JSON salvo em /home/hall/hall/tech_radar/data/latest.json
+2026-04-13 22:10:49 | INFO | Relatorio HTML salvo em /home/hall/hall/tech_radar/data/latest_report.html
+2026-04-13 22:10:49 | INFO | Dry-run ativo: e-mail nao sera enviado
+2026-04-13 22:13:53 | INFO | Iniciando execucao do Tech Radar
+2026-04-13 22:13:53 | INFO | Lendo feed: https://github.blog/feed/
+2026-04-13 22:13:56 | INFO | Feed GitHub Blog retornou 10 itens
+2026-04-13 22:13:56 | INFO | Lendo feed: https://github.blog/changelog/feed/
+2026-04-13 22:13:56 | INFO | Feed GitHub Changelog retornou 10 itens
+2026-04-13 22:13:56 | INFO | Lendo feed: https://duckdb.org/news/index.xml
+2026-04-13 22:13:56 | ERROR | Falha ao ler feed https://duckdb.org/news/index.xml: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/feeds.py", line 23, in fetch_all_feeds
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 22:13:56 | INFO | Lendo feed: https://news.ycombinator.com/rss
+2026-04-13 22:13:57 | INFO | Feed Hacker News retornou 30 itens
+2026-04-13 22:13:57 | INFO | Coletando fonte tecnica Simon Willison: https://simonwillison.net/atom/links/
+2026-04-13 22:13:57 | INFO | Fonte tecnica Simon Willison retornou 8 itens
+2026-04-13 22:13:57 | INFO | Coletando fonte tecnica Martin Fowler: https://martinfowler.com/feed.atom
+2026-04-13 22:13:58 | INFO | Fonte tecnica Martin Fowler retornou 8 itens
+2026-04-13 22:13:58 | INFO | Coletando fonte tecnica GitHub Blog: https://github.blog/feed/
+2026-04-13 22:13:58 | INFO | Fonte tecnica GitHub Blog retornou 4 itens
+2026-04-13 22:13:58 | INFO | Coletando fonte tecnica Posit Blog: https://posit.co/blog/index.xml
+2026-04-13 22:13:58 | ERROR | Falha ao processar fonte tecnica Posit Blog: 404 Client Error: Not Found for url: https://posit.co/blog/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://posit.co/blog/index.xml
+2026-04-13 22:13:58 | INFO | Coletando fonte tecnica DuckDB Blog: https://duckdb.org/news/index.xml
+2026-04-13 22:13:59 | ERROR | Falha ao processar fonte tecnica DuckDB Blog: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://duckdb.org/news/index.xml
+2026-04-13 22:13:59 | INFO | Coletando fonte tecnica Hugging Face Blog: https://huggingface.co/blog/feed.xml
+2026-04-13 22:14:00 | INFO | Fonte tecnica Hugging Face Blog retornou 4 itens
+2026-04-13 22:14:00 | INFO | Coletando fonte tecnica Python Software Foundation Blog: https://pyfound.blogspot.com/feeds/posts/default?alt=rss
+2026-04-13 22:14:01 | INFO | Fonte tecnica Python Software Foundation Blog retornou 1 itens
+2026-04-13 22:14:01 | INFO | Coletando fonte tecnica Cloudflare Blog: https://blog.cloudflare.com/rss/
+2026-04-13 22:14:02 | INFO | Fonte tecnica Cloudflare Blog retornou 8 itens
+2026-04-13 22:14:02 | INFO | Coletando fonte tecnica Netflix Tech Blog: https://netflixtechblog.com/feed
+2026-04-13 22:14:02 | ERROR | Falha ao processar fonte tecnica Netflix Tech Blog: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 1042, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.12/ssl.py", line 1320, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 149, in fetch_parsed_feed
+    response = get_with_retry(session, feed_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 162, in get_with_retry
+    raise last_exc
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 158, in get_with_retry
+    return session.get(url, timeout=REQUEST_TIMEOUT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 605, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='netflixtechblog.com', port=443): Max retries exceeded with url: /feed (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+2026-04-13 22:14:02 | INFO | Coletando fonte tecnica Thoughtworks Insights: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 22:14:03 | ERROR | Falha ao processar fonte tecnica Thoughtworks Insights: 404 Client Error: Not Found for url: https://www.thoughtworks.com/rss-insights.xml
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 54, in fetch_blog_sources
+    parsed = fetch_parsed_feed(feed_url, session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 150, in fetch_parsed_feed
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://www.thoughtworks.com/rss-insights.xml
+2026-04-13 22:14:03 | ERROR | Falha ao processar fonte tecnica Streamlit Blog: 403 Client Error: Forbidden for url: https://blog.streamlit.io/
+Traceback (most recent call last):
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 47, in fetch_blog_sources
+    feed_url = resolve_feed_url(source, session, discovery_cache, logger)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hall/hall/tech_radar/blog_sources.py", line 138, in resolve_feed_url
+    response.raise_for_status()
+  File "/home/hall/hall/tech_radar/.venv/lib/python3.12/site-packages/requests/models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://blog.streamlit.io/
+2026-04-13 22:14:03 | WARNING | Fonte Akita On Rails sem feed descoberto
+2026-04-13 22:14:03 | INFO | Payload bruto de blogs salvo em /home/hall/hall/tech_radar/data/raw/blog_sources_raw.json
+2026-04-13 22:14:03 | INFO | Total bruto de itens coletados: 83
+2026-04-13 22:14:03 | INFO | Itens apos filtros: 40 | deduplicados: 5
+2026-04-13 22:14:03 | INFO | JSON salvo em /home/hall/hall/tech_radar/data/latest.json
+2026-04-13 22:14:03 | INFO | Relatorio HTML salvo em /home/hall/hall/tech_radar/data/latest_report.html
+2026-04-13 22:14:03 | INFO | Dry-run ativo: e-mail nao sera enviado
