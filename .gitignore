@@ -1,7 +1,26 @@
 .venv/
 .env
+.env.*
+!.env.example
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*~
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 
 data/raw/
 data/cache/
